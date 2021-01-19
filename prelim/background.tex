@@ -1,0 +1,56 @@
+\section{Transition Scenarios}
+
+
+\section{Reactors}
+
+\section{\Cyclus}
+\Cyclus is a dynamic, open source agent-based fuel cycle simulator. Built 
+in C++, \Cyclus uses only open source and freely available libraries to 
+provide full access to all users and developers. The 
+\Cyclus architecture treats materials and facilities discretely and allows 
+for variable fidelity levels \cite{huff_fundamental_2016}. These attributes
+of \Cyclus allow for the software to easily model any fuel cycle scenario.
+
+\Cyclus uses the notion of an \textit{agent} to to represent different 
+components in the simulated fuel cycle. Agents are 
+defined using the \Cyclus application programming interface (API), which 
+defines and develops agents. Generic APIs are used to allow users 
+to develop their own suite of agent libraries and use them within \Cyclus. 
+The APIs anticipate the structure on information about a given library 
+that is required by the core \Cyclus kernel. This allows them to facilitate 
+information sharing between the plug-in library and the \Cyclus framework. 
+In addition to the flexibility in libraries and agents, this framework 
+also allows for flexibility in licensing and distribution of the user 
+defined libraries. Libraries are loaded without changes to the \Cyclus 
+kernel and without unwanted transfer of sensitive information. 
+
+The agent-based modeling paradigm employed by \Cyclus allows agent level 
+modeling, as opposed to system level modeling. This allows difference 
+fuel cycle facilities, such as a reactor and a fuel fabrication plant, to 
+be defined independently but still interact with each other in the 
+simulation. There are three main groups of agents within the \Cyclus 
+architecture: facilities, institutions, and regions. Facilities are 
+the individual units in the fuel cycle that implement technology, 
+such as a fuel fabrication facility or a uranium mine. Institutions 
+manage the facilities, similar to a company. Regions provide geographic 
+and political context for the institutions and regions, and can be thought 
+of as similar to individual nations. Each type of agent has its own 
+class wihtin \Cyclus. 
+
+The types of agents are related using a parent-child hierarchy: regions are
+parents of institutions, and institutions are parents of facilities. This 
+structure requires that institutions are responsible for the deployment 
+and decommissioning of the facilities. It also allows for advanced logic 
+to be implemented wth respect to facility building and decommissioning, 
+such as preferential regional or institutional trading (e.g. tariffs or 
+contracts). 
+
+\subsection{Verification and Use}
+Verification of \Cyclus has been performed \cite{bae_standardized_2019}, 
+based on a transition scenario from an open fuel cycle to an advanced
+fuel cycle with reprocessing \cite{feng_standardized_2016}. Due to 
+some inherent differences in \Cyclus and the other fuel cycle simulators 
+used by \cite{feng_standardized_2016} there were some differences in 
+the scenario parameters, such as \gls{LWR} batch size or 
+cycle length. These differences preserve the reactor core size, with a 
+negligible difference in the \gls{SFR} core size. 

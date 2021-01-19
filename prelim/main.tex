@@ -3,7 +3,7 @@
 
 
 \usepackage[acronym,toc]{glossaries}
-\include{acros}
+\input{../acros}
 
 \usepackage{xspace}
 \usepackage{graphics}
@@ -98,7 +98,11 @@ Abstract.
 
 \chapter*{Acknowledgments}
 
-Acks.
+This material is based upon work supported under an Integrated University 
+Program Graduate Fellowship. Any opinions, findings, conclusions or 
+recommendations expressed in this publication are those of the author(s) 
+and do not necessarily reflect the views of the Department of Energy Office 
+of Nuclear Energy.
 
 %% The thesis format requires the Table of Contents to come
 %% before any other major sections, all of these sections after
@@ -128,13 +132,18 @@ Acks.
 \chapter{Introduction}
 \input{introduction}
 
+\chapter{Background}
+\input{background}
+\chapter{Methdology}
+\input{methodology.tex}
+
 \chapter*{Appendix}
-\input{appendix}
+%\input{appendix}
 
 \backmatter
 
 \bibliographystyle{apalike}
-\bibliography{bibliography}
+\bibliography{../bibliography}
 
 \end{document}
 \endinput
