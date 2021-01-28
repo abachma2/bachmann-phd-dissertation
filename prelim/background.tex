@@ -52,5 +52,24 @@ fuel cycle with reprocessing \cite{feng_standardized_2016}. Due to
 some inherent differences in \Cyclus and the other fuel cycle simulators 
 used by \cite{feng_standardized_2016} there were some differences in 
 the scenario parameters, such as \gls{LWR} batch size or 
-cycle length. These differences preserve the reactor core size, with a 
-negligible difference in the \gls{SFR} core size. 
+cycle length. These differences are implemented to conserve the reactor 
+core size, with a negligible difference in the \gls{SFR} core size. \Cyclus 
+was shown to have strong agreement with the verification of other 
+fuel cycle simulators \cite{bae_standardized_2019} with respect to 
+multiple metrics such as reactor startup and decommission schedule, fresh 
+fuel loading, and annual reprocessing throughputs. One major difference
+between \Cyclus and other fuel cycle simulators identified by this work 
+is that \Cyclus fully resolves discrete batches for fuel discharge. This 
+implementation allows \Cyclus to better match realistic fuel handeling, but 
+does not prevent \Cyclus from producing comparable results to other 
+fuel cycle simulators. 
+
+\Cyclus has been used to model the EG 23 transition scenario 
+\cite{wigeland_nuclear_2014}, assuming a 1\% growth in power demand 
+\cite{djokic_application_2015}. The results from \Cyclus were compared 
+to the results from modeling the same transition scenario with DYMOND, 
+a fuel cycle simulator from \gls{ANL}. The power generated, reactor entry 
+time, and reactor exit time for the \Cyclus simulation qualitatively 
+matches well with the results of the DYMOND simulation, but the power 
+demand growth could match better to the target 1\% by slightly modifying 
+the \gls{SFR} deployment. 
