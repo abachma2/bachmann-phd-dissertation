@@ -8,7 +8,13 @@ Nuclear systems. Boca Raton, FL: CRC Press, 2012.
 
 \section{Simulations}
 This work employ \Cyclus \cite{huff_fundamental_2016} to simulate each fuel 
-cycle. 
+cycle. This allows for deployment of reactors to meet any required energy 
+demand, as well as material transactions between facilities. Each scenario
+models a once-through fuel cycle, with the primary difference being the 
+reactor types deployed. Figure \ref{fig:fuel_cycle} shows the facilities 
+and materials in the scenarios. Facilities in red are used in scenarios 
+with \gls{HALEU} fueled reactors, and provide a separation between the 
+\gls{LEU} and \gls{HALEU} material streams. 
 
 \begin{figure}
     \centering
@@ -47,3 +53,66 @@ cycle.
     red are added in for the transition scenarios.}
     \label{fig:fuel_cycle}
 \end{figure}
+
+Multiple scenarios are considered in this work, with each scenario differing
+by the type(s) of reactors and the power demand. The first scenario considered 
+is the current fuel cycle in the U.S. starting in 1965. This fuel cycle 
+consists of only \gls{LWR}s
+and has no specified power demand. This scenario provides a baseline for 
+the resource requirements that are currently used. Reactors deployed in this 
+scenario are the reactors that have been deployed in real life, with start and 
+end dates for each reactor obtained from the \gls{IAEA} \gls{PRIS} database 
+\cite{noauthor_power_1989}. Reactors still in operation in December 2020, and thus 
+lacking an end date in the \gls{PRIS} database are assumed to operate for 60 
+years. Only reactors with a power level above 400 MWe were used in the simulation 
+to avoid including prototype and research reactors present in the database. 
+Approximate masses for fuel used in the core the \gls{LWR}s was obtained 
+from \cite{todreas_nuclear_2012} and \cite{cacuci_handbook_2010}. 
+
+The other scenarios model a transition scenario that includes an advanced 
+reactor requiring \gls{HALEU} fuel. Two assumptions are used about the growth 
+in nuclear energy demand: one assuming no growth and the other assuming 
+1\% annual growth. The transition to the new reactor type starts in 2025. 
+These scenarios use the same  
+non-reactor facilities as the simulation of the current 
+U.S. fuel cycle. \gls{HALEU} fuel reactors 
+considered include the \gls{USNC} \gls{MMR} \textsuperscript{TM}
+\cite{mitchell_usnc_2020} and the X-Energy Xe-100 \textsuperscript{TM} 
+Reactor \cite{harlan_x-energy_2018}\cite{hussain_advances_2018}. Both of 
+these reactors are designed 
+to use \gls{HALEU} fuel in the form of \gls{TRISO} fuel particles. Table 
+\ref{tab:reactor_summary} summarizes important design aspects of these two reactors.
+
+\begin{table}[ht]
+    \caption{Mico-reactor design specifications}
+    \label{tab:reactor_summary}
+    \begin{tabular}{p{2.5cm}p{2.25cm}p{2.5cm}}
+        \hline
+        Design Criteria & \gls{USNC}\gls{MMR}\textsuperscript{TM} & 
+            X-Energy Xe-100\textsuperscript{TM} \\\hline
+        Reactor type & Modular HTGR & Modular HTGR \\
+        Power Output (MWth) & 15 & 200 \\
+        Enrichment (\% $^{235}U$) & 13 & 15.5 \\
+        Cycle Length (years) & 20 & online refuel\\
+        Fuel form & \gls{TRISO} compacts & \gls{TRISO} pebbles\\
+        Reactor Lifetime & 20 years & 60 years \\
+        Coolant & He & He \\
+        \hline
+    \end{tabular}
+\end{table}
+    
+We selected these two reactors because they have a high 
+likelihood of being deployed and because published information is 
+available about their designs. Comparing the transitional \gls{HALEU} 
+demands of these reactors will also inform the fuel cycle support 
+implications of deploying reactors with long cycle 
+times versus those utilizing online refueling. 
+
+Each of the transition scenarios will be simulated using a single type of 
+advanced reactor, resulting in four additional fuel cycle scenarios and five 
+scenarios in total. The \gls{LWR}s in all of the simulations are deployed 
+at their respective time steps using a ``cycamore:DeployInst'' institution, 
+and the advanced recators are deployed as needed by a ``cycamore:ManagerInst''
+institution. Both of these institutions are within the same 
+``cycamore:GrowthRegion'' region, with a specified power demand starting at 
+time step 709 (the start of year 2025) baed on the transition scenario. 
