@@ -67,7 +67,11 @@
     \cite{yacout_visionverifiable_2006}. Current recipes available are limited 
     to specific reactor designs and burnups \cite{yacout_visionverifiable_2006}.
 
+
+
+
     \subsection{VISION}
+    \Ac{VISION} was designed to address the AFCI objectives \cite{yacout_visionverifiable_2006}.
     \Ac{VISION} calculates metrics to describe the characteristics and 
     consequences of the modeled fuel cycle \cite{yacout_visionverifiable_2006}. 
     These metrics are grouped by the 
@@ -160,7 +164,22 @@
     such as preferential regional or institutional trading (e.g. tariffs or 
     contracts). 
 
-    
+    \Cyclus was developed to address the lack of flexibility of other 
+    simulators to use user-defined or custom technology and facilities. It 
+    was also developed to improve comparison capabilities for simulations 
+    eith and without these custom technologies \cite{huff_fundamental_2016}. 
+
+    Mutliple additions and extensions to \Cyclus have been developed, including 
+    a way to couple \Cyclus to ORIGEN, a fuel depletion software, to increase
+    \Cyclus's capability to perform dynamic, physics-based fuel depletion 
+    within a fuel cycle scenario \cite{skutnik_cyborg:_2016}. Another 
+    addition to \Cyclus is the automatic deployment of multiple fuel 
+    cycle facilities (not just reactors) to meet a defined power demand 
+    for the modeled scenario \cite{chee_demand-driven_2020}.    
+
+
+
+
 
     \subsection{ORION}
     ORION is a fuel cycle simulator developed by the UK National Nuclear 
@@ -172,27 +191,31 @@
     
     ORION has the ability to model each facility 
     as individual objects, which can be grouped together to represent small-scale 
-    facilities. Can automate facility deployment to meet electricity demand
+    facilities. It can also automate facility deployment to meet electricity demand
     \cite{feng_standardized_2016}, simialar to what has been developed through 
-    the \Cycamore archetypes for \Cyclus \cite{scopatz_cyclus_2015}.  
-
-    ORION can also simulate in-core irradiation of fuel, uisng externally 
-    generated lattice physics calculations prior to the ORION analysis
-    \cite{feng_standardized_2016}. This is different from \Cyclus, 
-    DYMOND, and VISION, which all use defined recipes for fuel before 
-    and after the reactor. 
-
-    ORION has been used to evaluate the transition from the current fleet of 
-    Light Water Reactors in the U.S. to a fleet of sodium fast reactors with 
-    continuius recycling \cite{sunny_transition_2015}.
-
-    Explicitly models the timing of each fuel reload in between cycle lengths 
-    instead of averaging the mass flow over a time step (which 
-    is what DYMOND and VISION do)\cite{feng_standardized_2016}.
-
-
+    the \Cycamore archetypes for \Cyclus \cite{scopatz_cyclus_2015} and 
+    the demand-driven deployment advances in \Cyclus \cite{chee_demand-driven_2020}.  
     
-    \subsection{Comparison}
+    One distinuguishing feature of ORION is that 
+    it can simulate in-core irradiation of fuel, using externally 
+    generated lattice physics calculations prior to the ORION analysis
+    \cite{feng_standardized_2016}. This is different from the standard 
+    capabilities of \Cyclus, \gls{DYMOND}, and \gls{VISION}, which all use defined 
+    recipes for fuel before and after the reactor. This is most similar to 
+    the CyBORG archetype in \Cyclus \cite{skutnik_cyborg:_2016}. Another 
+    distinuguishing feature is that ORION explicitly models the timing of 
+    each fuel reload between cycle lengths \cite{feng_standardized_2016}.
+    This is contrasted with \gls{DYMOND} and \gls{VISION} which both average
+    the mass flow over a time step \cite{feng_standardized_2016}.
+
+    One application of ORION was to evaluate the transition from the current fleet of 
+    Light Water Reactors in the U.S. to a fleet of sodium fast reactors with 
+    continuius recycling \cite{sunny_transition_2015}. This analysis coupled 
+    ORION with SCALE to create problem specific cross sections, expanding the 
+    capabilities of ORION to ensure fidelity between reactor design and 
+    the fuel cycle simulation \cite{sunny_transition_2015}. 
+    
+    \subsection{Comparison in performance}
     There was a multi-lab effort to compare the above mentioned fuel cycle 
     simulators. Each national lab in the project used a different 
     fuel cycle simulator: \gls{ORNL} used ORION, \gls{INL} used 
@@ -203,7 +226,13 @@
     fuel cycle option was identified as a scenario of interest in the 
     \gls{DOE-NE} Evaluation \& Screening Report \cite{wigeland_nuclear_2014}.
     
-    Results from \Cyclus are in \cite{djokic_application_2015}
+    The analysis using \Cyclus used a fixed reactor deployment schedule established 
+    using \gls{DYMOND}, and the results qualitatively match the results from 
+    \gls{DYMOND} despite the differences in their modeling strategies 
+    \cite{djokic_application_2015}. Despite these promising results the 
+    reactor deployment schedule should be improved to better match the 1\% 
+    annual increase in energy demand in the \Cyclus simulation
+    \cite{djokic_application_2015}.
 
 
     \subsubsection{Verification}
@@ -237,7 +266,23 @@
     
 
     \section{Conclusions}
-
+    Multiple fuel cycle simulators have been developed to address a variety 
+    of needs within the frame of fuel cycle modeling. Fuel cycle simulators 
+    can be used for a wide range of purposes, including evaluating transition
+    scenarios and evaluate non-proliferation criteria. Some fuel cycle 
+    simulators have been developed to address specific objectives, while others 
+    have been developed to increase the flexibility of fuel cycle modeling.
+    The simulators also have a wide variety of capabilities and modeling frameworks.
+    Some focus on dynamic scenerios, while others focus on static scenarios. 
+    One common feature among fuel cycle simulators is the use of recipes to 
+    define material compositions, although some (such as ORION and the CyBORG 
+    archetype of \Cyclus) allow for depletion or irradiation calculations 
+    to determine specific spent fuel compositions. One area of need in the 
+    further development of these fuel cycle simulators is the expansion of their 
+    energy technologies. They currently are only able to simulate transitions 
+    within the scope of nuclear reactor technology. A beneficial expansion 
+    would allow for their use in the evaluation of transitions between energy 
+    sources, such as transitioning from natural gas to nuclear reactors. 
 %\bibliographystyle{IEEEtran} 
 \bibliography{bibliography}
    
