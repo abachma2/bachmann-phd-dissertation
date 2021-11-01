@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage{multirow}
+\usepackage{lineno}
+\usepackage{xspace}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1in]{geometry}
+\modulolinenumbers[5]
+
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% packages and definitions (optional)
+\usepackage{placeins}
+\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{microtype} % improves typography for PDF
+\usepackage{hhline}
+\usepackage{amsmath}
+
+\usepackage{threeparttable, tablefootnote}
+
+\usepackage{tabularx}
+
+
+%% Special typesetting for Cyclus
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
+\newcommand{\Cycamore}{\textsc{Cycamore}\xspace}%
+\usepackage[acronym,shortcuts]{glossaries}
+\include{acros}
+
+%\makeglossary
+
+\begin{document}
+    \section{Introduction}
+    
+
+    \section{Review}
+    Fuel cycle modeling has become an important part of understanding 
+    transition scenarios. It entails modeling the flow of materials 
+    from one fuel cycle facility to another, and the deployment of 
+    facilities to meet the demands of the scenario modeled, such as
+    reactors to meet a power demand or enrichment facilities to meet 
+    the fuel demand of the reactors. To help address the 
+    variety of applications 
+    of fuel cycle models, multiple fuel cycle mdeling programs have 
+    been developed. 
+
+    This work discusses and compares some of the fuel cycle simulation 
+    software that has been developed. 
+    
+    \subsection{DYMOND}
+    The \gls{DYMOND} is the primary 
+    system dynamics model used by AFCI to evaluate fuel cycle scenarios of 
+    advanced nuclear energy systems \cite{yacout_visionverifiable_2006}.
+    It is run using the \textit{iThink} software with Microsoft Excel 
+    templates as the software inputs and outputs \cite{feng_standardized_2016}.
+    Inputs to DYMOND include reactor and fuel characteristics, fuel cycle
+    facilities, possible material flow pathways, and the power demand of the 
+    scenario \cite{feng_standardized_2016}. 
+    \gls{DYMOND} utilizes recipes to define reactor fuel inputs and outputs 
+    \cite{yacout_visionverifiable_2006}. Current recipes available are limited 
+    to specific reactor designs and burnups \cite{yacout_visionverifiable_2006}.
+
+    \subsection{VISION}
+    \Ac{VISION} was developed as part 
+    of the the U.S. Department of Energy's Advanced Fuel Cycle Initiative 
+    (AFCI) to help meet the initiative's objectives 
+    \cite{yacout_visionverifiable_2006}. VISION was developed to 
+    calculate the quantitative metrics to meet the explicit goals of the 
+    AFCI. VISION calculates metrics to describe the characteristics and 
+    consequences of the modeled fuel cycle. These metrics are grouped by the 
+    AFCI program objectives and include waste management, proliferation 
+    resistance, energy recovery, safety, and economics 
+    \cite{yacout_visionverifiable_2006}. VISION is designed to simualte the 
+    entire fuel cycle, but it is not designed to manage the fuel cycle, such 
+    as tracking individual fuel assemblies \cite{yacout_visionverifiable_2006}.
+
+    VISION is comprised of multiple modules that evaluate each mass flow and 
+    metric \cite{yacout_visionverifiable_2006}. VISION doesn't do direct 
+    neutronics calculations, it uses parameters output from external 
+    neutronics calculations \cite{yacout_visionverifiable_2006}. To account 
+    for changes in isotopic concentration (especially the short-lived 
+    isotopes) VISION includes isotopic decay modeling. This assists in 
+    understanding the waste forms in the fuel cycle \cite{yacout_visionverifiable_2006}.
+
+    Economics modeling is implemented to closely match the AFCI Cost Basis 
+    Report \cite{yacout_visionverifiable_2006}. 
+
+    (Pulled directly from \cite{yacout_visionverifiable_2006} The proposed VISION 
+    model would be used for the following:
+    \begin{itemize}
+        \item Evaluating the range of options against the range of objectives
+        \item Examining the implications of different mixes of reactors, impact of deployment of
+        different technologies, as well as potential “exit” or “off ramp” approaches to phase out
+        technologies if the need arises.
+        \item Examining timing issues of reactor deployment, reprocessing against waste generation
+        and repository needs.
+        \item Evaluating the capability of various reactor systems to handle transmutation, including
+        extended burn-up of plutonium in Light Water Reactors (LWRs) and gas-cooled reactors,
+        potential for destroying minor actinides in LWRs, and consumption of transuranics in fast
+        reactors and accelerator driven systems.
+        \item Assessing the benefits of advanced fuel cycles to reduce the need for additional
+        geological waste repositories and more efficiently use the first repository.
+        \item Performing dynamic simulations of fuel cycles to quantify infrastructure requirements
+        and identify key trade-offs between alternatives.
+        \item Evaluating creative solutions to make the nuclear fuel cycle cost competitive.
+        \item Evaluating repository performance for characteristics such as volume, mass, and heat
+        load; comparing various fuel cycles, reactor facility requirements, life cycle costs, and
+        repository savings.
+    \end{itemize}
+
+    Can provide time-dependent analysis, as shown in \cite{piet_dynamic_2011}, 
+    which simulated the transition from LWRs to advanced reactors with different 
+    forms of recycling. 
+
+
+
+    \subsection{Cyclus}
+    \Cyclus is an agent-based fuel cycle simulator \cite{huff_fundamental_2016}. 
+    It employs a modular architecture to model dynamic fuel cycles 
+    \cite{huff_fundamental_2016}.
+
+    Similar to VISION, \Cyclus can also do economics modeling. 
+
+    
+
+    \subsection{ORION}
+    ORION is a fuel cycle simulator developed by the UK National Nuclear 
+    Laboratory to track material movement through a user-defined nuclear 
+    fuel cycle, model decay of radionuclides, and model transmutation of fuel
+    \cite{gregg_analysis_2012}. The modeling is accurate enough to provide 
+    high-fidelity radioactive decay and tracking of over 2000 radionuclides
+    \cite{feng_standardized_2016}. 
+    
+    ORION has the ability to model each facility 
+    as individual objects, which can be grouped together to represent small-scale 
+    facilities. Can automate facility deployment to meet electricity demand
+    \cite{feng_standardized_2016}, simialar to what has been developed through 
+    the \Cycamore archetypes for \Cyclus \cite{scopatz_cyclus_2015}.  
+
+    ORION can also simulate in-core irradiation of fuel, uisng externally 
+    generated lattice physics calculations prior to the ORION analysis
+    \cite{feng_standardized_2016}. This is different from \Cyclus, 
+    DYMOND, and VISION, which all use defined recipes for fuel before 
+    and after the reactor. 
+
+    ORION has been used to evaluate the transition from the current fleet of 
+    Light Water Reactors in the U.S. to a fleet of sodium fast reactors with 
+    continuius recycling \cite{sunny_transition_2015}.
+
+    
+    \subsection{Comparison}
+    There was a multi-lab effort to compare the above mentioned fuel cycle 
+    simulators. Results from \Cyclus are in \cite{djokic_application_2015}
+
+
+    \subsubsection{Verification}
+
+    Verification of fuel cycle models has been performed
+    \cite{feng_standardized_2016,bae_standardized_2019}. Verification efforts
+    compared the performance of DYMOND, VISION, ORION, MARKAL 
+    \cite{feng_standardized_2016} and \Cyclus later \cite{bae_standardized_2019}, 
+    making adjustments to the codes as needed
+    during the verification to ensure agreement between the codes. Verification 
+    of each code used the same problem description, the transition from 
+
+
+    
+
+    \section{Conclusions}
+
+%\bibliographystyle{IEEEtran} 
+\bibliography{bibliography}
+   
+\end{document}
