@@ -36,55 +36,71 @@
 %\makeglossary
 
 \begin{document}
-    \section{Introduction}
-    Fuel cycle modeling has become an important part of understanding 
-    transition scenarios. It entails modeling the flow of materials 
-    from one fuel cycle facility to another, and the deployment of 
-    facilities to meet the demands of the scenario modeled. 
-    To help address the variety of applications 
-    of fuel cycle models, multiple fuel cycle mdeling programs have 
-    been developed. 
+\section{Introduction}
+    Fuel cycle simulators have become an important tool in understanding 
+    transition scenarios of the nuclear fuel cycle, or the transition 
+    from one fuel cycle option to another. Common transition scenarios 
+    modeled include the transition from a once-through fuel cycle with 
+    \glspl{LWR} to recycling spent fuel with an advanced reactor. Important 
+    information gained from fuel cycle simulations include material 
+    flows and facility deployment schedules to meet an energy demand. 
 
-    This work discusses and compares some of the fuel cycle simulation 
+    To accomodate the wide variety of transition scenarios and the multitude
+    of parameters associated with fuel cycle modeling, multiple fuel 
+    cycle simulators have been developed. Each simulator has been developed 
+    to address a specific need, and most employ different types of modeling 
+    frameworks. To help understand these differences, this work discusses 
+    and compares some of the fuel cycle simulation 
     software that has been developed. The fuel cycle simulators 
     discussed in this work are not a comprehensive list of all available 
     simulators. 
     
 
-    \section{Review}
-    
-    
-    \subsection{DYMOND}
-    The \gls{DYMOND} is the primary 
-    system dynamics model used by AFCI to evaluate fuel cycle scenarios of 
+\section{Review}
+\subsection{DYMOND}
+    \gls{DYMOND} was developed for the Generation IV Fuel Cycle Cross Cut 
+    group and has been the primary 
+    system dynamics model used by \gls{DOE} Advanced Fuel Cycle Initiative (AFCI)
+    to evaluate fuel cycle scenarios of 
     advanced nuclear energy systems \cite{yacout_visionverifiable_2006}.
     It is run using the \textit{iThink} software with Microsoft Excel 
     templates as the software inputs and outputs \cite{feng_standardized_2016}.
+    \gls{DYMOND} performs detailed system dynamic modeling for the whole nuclear 
+    energy enterprise \cite{yacout_visionverifiable_2006}. This dynamic modeling includes 
+    accounting for possible construction delays. 
     Inputs to DYMOND include reactor and fuel characteristics, fuel cycle
     facilities, possible material flow pathways, and the power demand of the 
     scenario \cite{feng_standardized_2016}. 
-    \gls{DYMOND} utilizes recipes to define reactor fuel inputs and outputs 
-    \cite{yacout_visionverifiable_2006}. Current recipes available are limited 
+    \gls{DYMOND} utilizes recipes (composition vectors) to define reactor fuel 
+    inputs and outputs. but current recipes available are limited 
     to specific reactor designs and burnups \cite{yacout_visionverifiable_2006}.
+    If simulating a fuel cycle with recycling, the primary material flow control 
+    is the availability of elemental plutonium.
 
+    \gls{DYMOND} has been used for dynamic analysis of promising fuel cycles 
+    identified by the AFCI \cite{yacout_dynamic_2000}. These simulations 
+    showed how the waste needing a repository can be reduced by implementing 
+    recycling, and that removing \gls{TRU} materials from the repository 
+    can improve repository performance by reducing the short-term heat, 
+    long-term heat, and long-term dose \cite{yacout_dynamic_2000}. This 
+    analysis demonstrated how fuel cycle modeling can be used to inform  
+    performance of future fuel cycle facilitites. 
 
-
-
-    \subsection{VISION}
-    \Ac{VISION} was designed to address the AFCI objectives \cite{yacout_visionverifiable_2006}.
-    \Ac{VISION} calculates metrics to describe the characteristics and 
+\subsection{VISION}
+    \Ac{VISION} was designed to address the AFCI objectives \cite{yacout_visionverifiable_2006}
+    and calculates metrics to describe the characteristics and 
     consequences of the modeled fuel cycle \cite{yacout_visionverifiable_2006}. 
-    These metrics are grouped by the 
-    \gls{DOE} Advanced Fuel Cycle Initiative (AFCI) program objectives and include 
-    waste management, proliferation 
-    resistance, energy recovery, safety, and economics 
-    \cite{yacout_visionverifiable_2006}. \gls{VISION} is designed to simualte the 
-    entire fuel cycle, but it is not designed to manage the fuel cycle, such 
-    as tracking individual fuel assemblies \cite{yacout_visionverifiable_2006}.
+    These metrics are grouped by the \gls{DOE} AFCI program objectives and include 
+    waste management, proliferation resistance, energy recovery, safety, 
+    and economics \cite{yacout_visionverifiable_2006}. \gls{VISION} is designed 
+    to simualte the entire fuel cycle, but it is not designed to manage the 
+    fuel cycle, such as tracking individual fuel assemblies 
+    \cite{yacout_visionverifiable_2006}.
 
-    VISION is comprised of multiple modules that evaluate each mass flow and 
-    metric \cite{yacout_visionverifiable_2006}. \gls{VISION} does not perform
-    neutronics calculations, but it can use parameters output from external 
+    \gls{VISION} is comprised of multiple modules that evaluate each mass flow and 
+    metric \cite{yacout_visionverifiable_2006}. \gls{VISION} primarily uses 
+    recipes to define material compositions and does not perform
+    neutronics calculations. However, it can use parameters output from external 
     neutronics calculations \cite{yacout_visionverifiable_2006}. To account 
     for changes in isotopic concentration (especially the short-lived 
     isotopes) \gls{VISION} includes isotopic decay modeling. This capability 
@@ -93,18 +109,14 @@
     Similar to \gls{DYMOND}, \gls{VISION} models continuous fuel reprocessing at 
     every time step \cite{feng_standardized_2016}. 
 
-    An additional feature of \gls{VISION} is economics modeling, which was 
-    implemented to closely match the AFCI Cost Basis 
-    Report \cite{yacout_visionverifiable_2006}. 
-
     Potential uses of \gls{VISION} include investigating the timing issues 
     associated with reactor deployment or waste accumulation for reprocessing, 
     or evaluating the benefits of advanced fuel cycles to meet specific 
     criteria, such as the storage limits of a geologic repository 
-    \cite{yacout_visionverifiable_2006}. 
-
-    \gls{VISION} can provide time-dependent analysis, as shown in \cite{piet_dynamic_2011}, 
-    which simulated the transition from LWRs to advanced reactors with different 
+    \cite{yacout_visionverifiable_2006}. One specific use of \gls{VISION}
+    is the time-dependent analysis of transition scenarios, as shown in 
+    \cite{piet_dynamic_2011}. This work 
+    simulated the transition from LWRs to advanced reactors with different 
     forms of recycling. Time-dependent analysis provies understanding of the 
     true system evolution for a dynamic fuel cycle scenraio. This capability of 
     \gls{VISION} was used to evalauate methods to meet the ACFI strategic 
@@ -117,12 +129,12 @@
     results demonstrate how fuel cycle simulators can be used to evaluate 
     non-proliferation criteria. 
 
+\subsection{Cyclus}
+    \Cyclus was developed to address the lack of flexibility of other 
+    simulators to use user-defined or custom technology and facilities. It 
+    was also developed to improve comparison capabilities for simulations 
+    eith and without these custom technologies \cite{huff_fundamental_2016}.
 
-    
-
-
-
-    \subsection{Cyclus}
     \Cyclus is an open source agent-based fuel cycle simulator. Built 
     in C++, \Cyclus uses only open source and freely available libraries to 
     provide full access to all users and developers. The 
@@ -136,15 +148,16 @@
     defines and develops agents. Generic APIs are used to allow users 
     to develop their own suite of agent libraries and use them within \Cyclus. 
     The APIs anticipate the structure on information about a given library 
-    that is required by the core \Cyclus kernel. This allows them to facilitate 
+    that is required by the core \Cyclus kernel. This framework allows them 
+    to facilitate 
     information sharing between the plug-in library and the \Cyclus framework. 
     In addition to the flexibility in libraries and agents, this framework 
     also allows for flexibility in licensing and distribution of the user 
-    defined libraries. Libraries are loaded without changes to the \Cyclus 
-    kernel and without unwanted transfer of sensitive information. 
+    defined libraries \cite{huff_fundamental_2016}.
 
     The agent-based modeling paradigm employed by \Cyclus allows agent level 
-    modeling, as opposed to system level modeling. This allows difference 
+    modeling, as opposed to system level modeling. This modeling paradigm 
+    allows difference 
     fuel cycle facilities, such as a reactor and a fuel fabrication plant, to 
     be defined independently but still interact with each other in the 
     simulation. There are three main groups of agents within the \Cyclus 
@@ -164,11 +177,6 @@
     such as preferential regional or institutional trading (e.g. tariffs or 
     contracts). 
 
-    \Cyclus was developed to address the lack of flexibility of other 
-    simulators to use user-defined or custom technology and facilities. It 
-    was also developed to improve comparison capabilities for simulations 
-    eith and without these custom technologies \cite{huff_fundamental_2016}. 
-
     Mutliple additions and extensions to \Cyclus have been developed, including 
     a way to couple \Cyclus to ORIGEN, a fuel depletion software, to increase
     \Cyclus's capability to perform dynamic, physics-based fuel depletion 
@@ -177,11 +185,7 @@
     cycle facilities (not just reactors) to meet a defined power demand 
     for the modeled scenario \cite{chee_demand-driven_2020}.    
 
-
-
-
-
-    \subsection{ORION}
+\subsection{ORION}
     ORION is a fuel cycle simulator developed by the UK National Nuclear 
     Laboratory to track material movement through a user-defined nuclear 
     fuel cycle, model decay of radionuclides, and model transmutation of fuel
@@ -199,13 +203,14 @@
     One distinuguishing feature of ORION is that 
     it can simulate in-core irradiation of fuel, using externally 
     generated lattice physics calculations prior to the ORION analysis
-    \cite{feng_standardized_2016}. This is different from the standard 
+    \cite{feng_standardized_2016}. This feature is different from the standard 
     capabilities of \Cyclus, \gls{DYMOND}, and \gls{VISION}, which all use defined 
-    recipes for fuel before and after the reactor. This is most similar to 
+    recipes for fuel before and after the reactor. Generating cross section 
+    data and performing neutronics calculations is most similar to 
     the CyBORG archetype in \Cyclus \cite{skutnik_cyborg:_2016}. Another 
     distinuguishing feature is that ORION explicitly models the timing of 
     each fuel reload between cycle lengths \cite{feng_standardized_2016}.
-    This is contrasted with \gls{DYMOND} and \gls{VISION} which both average
+    This feature is contrasted with \gls{DYMOND} and \gls{VISION} which both average
     the mass flow over a time step \cite{feng_standardized_2016}.
 
     One application of ORION was to evaluate the transition from the current fleet of 
@@ -215,7 +220,7 @@
     capabilities of ORION to ensure fidelity between reactor design and 
     the fuel cycle simulation \cite{sunny_transition_2015}. 
     
-    \subsection{Comparison in performance}
+\subsection{Comparison in performance}
     There was a multi-lab effort to compare the above mentioned fuel cycle 
     simulators. Each national lab in the project used a different 
     fuel cycle simulator: \gls{ORNL} used ORION, \gls{INL} used 
@@ -232,14 +237,15 @@
     \cite{djokic_application_2015}. Despite these promising results the 
     reactor deployment schedule should be improved to better match the 1\% 
     annual increase in energy demand in the \Cyclus simulation
-    \cite{djokic_application_2015}.
+    \cite{djokic_application_2015}. The results of the other parts of 
+    this project could not be found via open-source resources. 
 
 
-    \subsubsection{Verification}
-
-    Verification of fuel cycle models has been performed
+\subsubsection{Verification efforts}
+    Another effort to compare fuel cycle simulators was in their verification
     \cite{feng_standardized_2016,bae_standardized_2019}. Verification efforts
-    compared the performance of DYMOND, VISION, ORION, MARKAL 
+    compared the performance of DYMOND, VISION, ORION, MARKAL (not included in 
+    this work)
     \cite{feng_standardized_2016} and \Cyclus later \cite{bae_standardized_2019}, 
     making adjustments to the codes as needed
     during the verification to ensure agreement between the codes. Verification 
@@ -265,7 +271,7 @@
 
     
 
-    \section{Conclusions}
+\section{Conclusions}
     Multiple fuel cycle simulators have been developed to address a variety 
     of needs within the frame of fuel cycle modeling. Fuel cycle simulators 
     can be used for a wide range of purposes, including evaluating transition
