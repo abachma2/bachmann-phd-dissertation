@@ -40,10 +40,8 @@
     Fuel cycle modeling has become an important part of understanding 
     transition scenarios. It entails modeling the flow of materials 
     from one fuel cycle facility to another, and the deployment of 
-    facilities to meet the demands of the scenario modeled, such as
-    reactors to meet a power demand or enrichment facilities to meet 
-    the fuel demand of the reactors. To help address the 
-    variety of applications 
+    facilities to meet the demands of the scenario modeled. 
+    To help address the variety of applications 
     of fuel cycle models, multiple fuel cycle mdeling programs have 
     been developed. 
 
@@ -70,28 +68,29 @@
     to specific reactor designs and burnups \cite{yacout_visionverifiable_2006}.
 
     \subsection{VISION}
-    \Ac{VISION} was developed as part 
-    of the the U.S. Department of Energy's Advanced Fuel Cycle Initiative 
-    (AFCI) to help meet the initiative's objectives 
-    \cite{yacout_visionverifiable_2006}. VISION was developed to 
-    calculate the quantitative metrics to meet the explicit goals of the 
-    AFCI. VISION calculates metrics to describe the characteristics and 
-    consequences of the modeled fuel cycle. These metrics are grouped by the 
-    AFCI program objectives and include waste management, proliferation 
+    \Ac{VISION} calculates metrics to describe the characteristics and 
+    consequences of the modeled fuel cycle \cite{yacout_visionverifiable_2006}. 
+    These metrics are grouped by the 
+    \gls{DOE} Advanced Fuel Cycle Initiative (AFCI) program objectives and include 
+    waste management, proliferation 
     resistance, energy recovery, safety, and economics 
-    \cite{yacout_visionverifiable_2006}. VISION is designed to simualte the 
+    \cite{yacout_visionverifiable_2006}. \gls{VISION} is designed to simualte the 
     entire fuel cycle, but it is not designed to manage the fuel cycle, such 
     as tracking individual fuel assemblies \cite{yacout_visionverifiable_2006}.
 
     VISION is comprised of multiple modules that evaluate each mass flow and 
-    metric \cite{yacout_visionverifiable_2006}. VISION doesn't do direct 
-    neutronics calculations, it uses parameters output from external 
+    metric \cite{yacout_visionverifiable_2006}. \gls{VISION} does not perform
+    neutronics calculations, but it can use parameters output from external 
     neutronics calculations \cite{yacout_visionverifiable_2006}. To account 
     for changes in isotopic concentration (especially the short-lived 
-    isotopes) VISION includes isotopic decay modeling. This assists in 
+    isotopes) \gls{VISION} includes isotopic decay modeling. This capability 
+    assists in 
     understanding the waste forms in the fuel cycle \cite{yacout_visionverifiable_2006}.
+    Similar to \gls{DYMOND}, \gls{VISION} models continuous fuel reprocessing at 
+    every time step \cite{feng_standardized_2016}. 
 
-    Economics modeling is implemented to closely match the AFCI Cost Basis 
+    An additional feature of \gls{VISION} is economics modeling, which was 
+    implemented to closely match the AFCI Cost Basis 
     Report \cite{yacout_visionverifiable_2006}. 
 
     Potential uses of \gls{VISION} include investigating the timing issues 
@@ -100,23 +99,66 @@
     criteria, such as the storage limits of a geologic repository 
     \cite{yacout_visionverifiable_2006}. 
 
-    Can provide time-dependent analysis, as shown in \cite{piet_dynamic_2011}, 
+    \gls{VISION} can provide time-dependent analysis, as shown in \cite{piet_dynamic_2011}, 
     which simulated the transition from LWRs to advanced reactors with different 
-    forms of recycling. 
+    forms of recycling. Time-dependent analysis provies understanding of the 
+    true system evolution for a dynamic fuel cycle scenraio. This capability of 
+    \gls{VISION} was used to evalauate methods to meet the ACFI strategic 
+    objectives \cite{piet_dynamic_2011}. This work showed that uranium mass 
+    dominates the waste produced from reactors, and thus dominates the focus
+    to reduce waste production. This work also showed that the location and 
+    mass-flow of weapons-usable \gls{TRU} material will depend on the 
+    reactor technology deployed, but the plutonium quality 
+    ($^{239}$Pu/$^{total}$PU) is not sensitive to the fuel cycle. These later
+    results demonstrate how fuel cycle simulators can be used to evaluate 
+    non-proliferation criteria. 
 
-    Models continuous reprocessing of fuel at every time step, same as DYMOND \cite{feng_standardized_2016}.
+
+    
 
 
 
     \subsection{Cyclus}
-    open source agent-based fuel cycle simulator. Built 
+    \Cyclus is an open source agent-based fuel cycle simulator. Built 
     in C++, \Cyclus uses only open source and freely available libraries to 
     provide full access to all users and developers. The 
     \Cyclus architecture treats materials and facilities discretely and allows 
     for variable fidelity levels \cite{huff_fundamental_2016}. These attributes
     of \Cyclus allow for the software to easily model any fuel cycle scenario.
 
-    Similar to VISION, \Cyclus can also do economics modeling. 
+    \Cyclus uses the notion of an \textit{agent} to to represent different 
+    components in the simulated fuel cycle. Agents are 
+    defined using the \Cyclus application programming interface (API), which 
+    defines and develops agents. Generic APIs are used to allow users 
+    to develop their own suite of agent libraries and use them within \Cyclus. 
+    The APIs anticipate the structure on information about a given library 
+    that is required by the core \Cyclus kernel. This allows them to facilitate 
+    information sharing between the plug-in library and the \Cyclus framework. 
+    In addition to the flexibility in libraries and agents, this framework 
+    also allows for flexibility in licensing and distribution of the user 
+    defined libraries. Libraries are loaded without changes to the \Cyclus 
+    kernel and without unwanted transfer of sensitive information. 
+
+    The agent-based modeling paradigm employed by \Cyclus allows agent level 
+    modeling, as opposed to system level modeling. This allows difference 
+    fuel cycle facilities, such as a reactor and a fuel fabrication plant, to 
+    be defined independently but still interact with each other in the 
+    simulation. There are three main groups of agents within the \Cyclus 
+    architecture: facilities, institutions, and regions. Facilities are 
+    the individual units in the fuel cycle that implement technology, 
+    such as a fuel fabrication facility or a uranium mine. Institutions 
+    manage the facilities, similar to a company. Regions provide geographic 
+    and political context for the institutions and regions, and can be thought 
+    of as similar to individual nations. Each type of agent has its own 
+    class wihtin \Cyclus. 
+
+    The types of agents are related using a parent-child hierarchy: regions are
+    parents of institutions, and institutions are parents of facilities. This 
+    structure requires that institutions are responsible for the deployment 
+    and decommissioning of the facilities. It also allows for advanced logic 
+    to be implemented wth respect to facility building and decommissioning, 
+    such as preferential regional or institutional trading (e.g. tariffs or 
+    contracts). 
 
     
 
