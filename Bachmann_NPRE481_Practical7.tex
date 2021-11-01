@@ -37,9 +37,6 @@
 
 \begin{document}
     \section{Introduction}
-    
-
-    \section{Review}
     Fuel cycle modeling has become an important part of understanding 
     transition scenarios. It entails modeling the flow of materials 
     from one fuel cycle facility to another, and the deployment of 
@@ -51,7 +48,13 @@
     been developed. 
 
     This work discusses and compares some of the fuel cycle simulation 
-    software that has been developed. 
+    software that has been developed. The fuel cycle simulators 
+    discussed in this work are not a comprehensive list of all available 
+    simulators. 
+    
+
+    \section{Review}
+    
     
     \subsection{DYMOND}
     The \gls{DYMOND} is the primary 
@@ -91,39 +94,27 @@
     Economics modeling is implemented to closely match the AFCI Cost Basis 
     Report \cite{yacout_visionverifiable_2006}. 
 
-    (Pulled directly from \cite{yacout_visionverifiable_2006} The proposed VISION 
-    model would be used for the following:
-    \begin{itemize}
-        \item Evaluating the range of options against the range of objectives
-        \item Examining the implications of different mixes of reactors, impact of deployment of
-        different technologies, as well as potential “exit” or “off ramp” approaches to phase out
-        technologies if the need arises.
-        \item Examining timing issues of reactor deployment, reprocessing against waste generation
-        and repository needs.
-        \item Evaluating the capability of various reactor systems to handle transmutation, including
-        extended burn-up of plutonium in Light Water Reactors (LWRs) and gas-cooled reactors,
-        potential for destroying minor actinides in LWRs, and consumption of transuranics in fast
-        reactors and accelerator driven systems.
-        \item Assessing the benefits of advanced fuel cycles to reduce the need for additional
-        geological waste repositories and more efficiently use the first repository.
-        \item Performing dynamic simulations of fuel cycles to quantify infrastructure requirements
-        and identify key trade-offs between alternatives.
-        \item Evaluating creative solutions to make the nuclear fuel cycle cost competitive.
-        \item Evaluating repository performance for characteristics such as volume, mass, and heat
-        load; comparing various fuel cycles, reactor facility requirements, life cycle costs, and
-        repository savings.
-    \end{itemize}
+    Potential uses of \gls{VISION} include investigating the timing issues 
+    associated with reactor deployment or waste accumulation for reprocessing, 
+    or evaluating the benefits of advanced fuel cycles to meet specific 
+    criteria, such as the storage limits of a geologic repository 
+    \cite{yacout_visionverifiable_2006}. 
 
     Can provide time-dependent analysis, as shown in \cite{piet_dynamic_2011}, 
     which simulated the transition from LWRs to advanced reactors with different 
     forms of recycling. 
 
+    Models continuous reprocessing of fuel at every time step, same as DYMOND \cite{feng_standardized_2016}.
+
 
 
     \subsection{Cyclus}
-    \Cyclus is an agent-based fuel cycle simulator \cite{huff_fundamental_2016}. 
-    It employs a modular architecture to model dynamic fuel cycles 
-    \cite{huff_fundamental_2016}.
+    open source agent-based fuel cycle simulator. Built 
+    in C++, \Cyclus uses only open source and freely available libraries to 
+    provide full access to all users and developers. The 
+    \Cyclus architecture treats materials and facilities discretely and allows 
+    for variable fidelity levels \cite{huff_fundamental_2016}. These attributes
+    of \Cyclus allow for the software to easily model any fuel cycle scenario.
 
     Similar to VISION, \Cyclus can also do economics modeling. 
 
@@ -153,10 +144,24 @@
     Light Water Reactors in the U.S. to a fleet of sodium fast reactors with 
     continuius recycling \cite{sunny_transition_2015}.
 
+    Explicitly models the timing of each fuel reload in between cycle lengths 
+    instead of averaging the mass flow over a time step (which 
+    is what DYMOND and VISION do)\cite{feng_standardized_2016}.
+
+
     
     \subsection{Comparison}
     There was a multi-lab effort to compare the above mentioned fuel cycle 
-    simulators. Results from \Cyclus are in \cite{djokic_application_2015}
+    simulators. Each national lab in the project used a different 
+    fuel cycle simulator: \gls{ORNL} used ORION, \gls{INL} used 
+    \gls{VISION}, \gls{ANL} used \gls{DYMOND}, and \gls{LLNL} used
+    \Cyclus. Each lab simulated the same transition from a once-through 
+    fuel cycle to one with continuous recyling of uranium and plutonium 
+    with natural uranium in a fleet of critial fast reactors. This 
+    fuel cycle option was identified as a scenario of interest in the 
+    \gls{DOE-NE} Evaluation \& Screening Report \cite{wigeland_nuclear_2014}.
+    
+    Results from \Cyclus are in \cite{djokic_application_2015}
 
 
     \subsubsection{Verification}
@@ -167,8 +172,25 @@
     \cite{feng_standardized_2016} and \Cyclus later \cite{bae_standardized_2019}, 
     making adjustments to the codes as needed
     during the verification to ensure agreement between the codes. Verification 
-    of each code used the same problem description, the transition from 
+    of each code used the same problem description: the transition from 
+    a fleet of 100 \glspl{LWR} to \glspl{SFR} with reprocessing assuming a
+    0\% energy demand growth.  
+    The scenario was designed to be simple enough to allow for a comparison 
+    to be made with results from a spreadsheet using basic arithmetic. The 
+    results of this 
+    verification showed that each of the codes and the spreadsheet were in 
+    good agreement, with the exception of a few differences resulting from 
+    variations in the code functions \cite{feng_standardized_2016}.
 
+    The verification of \Cyclus identified two primary differences between 
+    this code and the others verified \cite{bae_standardized_2019}. The 
+    first is the core depletion upon reactor decommissioning. The \Cycamore
+    reactor archetype deplets half of the core upon decommissioning, while the 
+    other codes deplete the entire core. This difference was mitigated by 
+    modifying the \Cycamore source code to match the other codes. The other 
+    difference identified is that \Cyclus and ORION both fully resolve 
+    discrete batches of fuel discharge, while the other codes do not. This 
+    difference stems from modeling choices made in each of the codes 
 
     
 
