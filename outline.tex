@@ -27,22 +27,24 @@
 
 \item Introduction
 \begin{outline}
-    \item
+    \item Purpose of the work: investigate the effect of deploying HALEU-fueled 
+          advanced reactors on the nuclear fuel cycle in the US 
+    \item Scope:
     \begin{outline}
-    \item
+        \item US facilities
+        \item select advanced reactors: USNC MMR, X-energy Xe-100, NuScale VOYGR
+        \item Front-end and back-end of the fuel cycle
     \end{outline}
-    \item
-    \begin{outline}
-    \item 
-    \end{outline}
-
+    \item Benefits of using HALEU for reactors -- why we care about these reactors
 \end{outline}
 
 \item Lit Review
 \begin{outline}
     \item The nuclear fuel cycle
     \begin{outline}
-          \item 
+          \item Once-through vs recycle
+          \item Enrichment facility/SWU calculations
+          \item Recycling processe
     \end{outline}
     
     \item Fuel Cycle simulators
@@ -51,7 +53,12 @@
         \begin{outline}
               \item \Cycamore \cite{scopatz_cyclus_2015}
         \end{outline}
-        \item 
+        \item DYMOND \cite{feng_standardized_2016}
+        \item Use and verification 
+        \begin{outline}
+            \item Verification \cite{feng_standardized_2016,bae_standardized_2019}
+            \item SImulators comparison \cite{djokic_application_2015}
+        \end{outline}
     \end{outline}
     \item Fuel Cycle modeling
     \begin{outline}
@@ -62,15 +69,54 @@
     \end{outline}
 \end{outline}
 
-\item Modeling material requirements
+\item Modeling material flows -- once through fuel cycles
 \begin{outline}
     \item Modeling individual reactor transitions
     \begin{outline}
-        \item No growth transitions
-        \item 1\% growth transitions
+        \item MMR 
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline}
+        \item Xe-100
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline}
     \end{outline}
+    \item Modeling multi-reactor transitions 
+    \begin{outline}
+        \item Xe-100 and MMR
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline} 
+        \item Xe-100 and VOYGR 
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline}
+        \item MMR and VOYGR 
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline}
+        \item Xe-100, MMR, and VOGYR 
+        \begin{outline}
+            \item No growth transitions
+            \item 1\% growth transitions
+        \end{outline}
+    \end{outline}
+    \item Sensitivity analysis and optimization
 \end{outline}
+
+\item Model fuel cycle with recycle 
+\begin{outline}
+    \item Xe-100 and MMR with fuel going to LWRs
+\end{outline}
+
 \item Downblending effects on neutronics
+
 \item Conclusions
 \end{outline}
 
