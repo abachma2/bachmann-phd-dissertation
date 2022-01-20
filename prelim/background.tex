@@ -1,6 +1,85 @@
-\section{Nuclear fuel cycles}
+\section{The nuclear fuel cycle}
+The nuclear fuel cyclye encompasses the activities and processes 
+for the use of fissile materials in fission nuclear reactors \cite{tsoulfanidis_nuclear_2013}. 
+This can include the use of uranuim, thorium, or even plutonium as the 
+fuel for the reactor, with uranium being the most widely used fuel for 
+power reactors \hl{FIND CITATION}. This work focuses on a uranium based 
+fuel cycle. The nuclear fuel cycle begins with the mining of uranium ores from the earth 
+and ends with either the final disposal of the radioactive waste produced 
+\cite{tsoulfanidis_nuclear_2013}. There are mutliple variations of 
+the uranium-based fuel cycle that differ based on the type and design of 
+the reactors deployed. Two primary variations on the nuclear fuel cycle 
+include the once-through and uranium and plutonium recycling fuel cycles 
+\cite{tsoulfanidis_nuclear_2013}.
+
+\subsection{Once-through fuel cycle}
+A once-through fuel cycle is characterized by fuel only going through one 
+pass through a reactor before being disposed of (Figure \ref{fig:once_through_background}).
+\include{once-through-figure}
+
+\subsection{Recycling fuel cycle}
+A recycling fuel cycle is characterized by fuel going through additional 
+passes through a reactor after a separtations step to remove fission 
+products (Figure \ref{fig:recycle_background})
+\include{recycling-figure.tex}
+
+\subsection{Enrichment}
+In the nuclear fuel cycle, enrichment increases the relative abundance of 
+uranium-235 compared to uranium-238 in the fuel. The capacity of an 
+enrichment facility is based on a number of quantities \cite{tsoulfanidis_nuclear_2013}:
+\begin{subequations}
+    \begin{equation}
+        F = \text{mass (kg) of feed material per unit time}
+    \end{equation}
+    \begin{equation}
+        P = \text{mass (kg) of product material per unit time}
+    \end{equation}
+    \begin{equation}
+        T = \text{mass (kg) of tails produced per unit time}
+    \end{equation}
+    \begin{equation}
+        x_f = \text{weight fraction of $^{235}$U in the feed stream}
+    \end{equation}
+    \begin{equation}
+        x_p = \text{weight fraction of $^{235}$U in the product stream}
+    \end{equation}
+    \begin{equation}
+        x_t = \text{weight fraction of $^{235}$U in the tails stream}
+    \end{equation}
+    \begin{equation}
+        SWU = \text{separtive work units (SWU); the physical work required to separate the isotopes}
+    \end{equation}
+\end{subequations}
+
+Each of these quantites can be related using the following equations:
+\begin{subequations}
+    \begin{equation}
+        F = P + T
+    \end{equation}
+    \begin{equation}
+        x_fF = x_pP + x_tT
+    \end{equation}
+    \begin{equation}
+        SWU = [P*V(x_p) +T*V(x_t) - F*V(x_f)]*t
+    \end{equation}
+    \text{in which:}
+    \begin{equation}
+        V(x_i) = (2x_i - 1)*\ln\left(\frac{x_i}{1-x_i}\right)
+    \end{equation}
+    \begin{equation}
+        t = \text{a given time period}
+    \end{equation}
+\end{subequations}
 
 \section{Fuel cycle simulators}
+Fuel cycle simulators are computational tools to model the flow of materials
+and the commissioning and decommissioning of facilities for a given fuel 
+cycle. 
+
+A variety of fuel cycle simulators have been developed to meet 
+different needs, including VISION\cite{yacout_visionverifiable_2006}, 
+DYMOND \cite{yacout_visionverifiable_2006}, and ORION \hl{FIND CITATION}. 
+This work primarily 
 
 \subsection{\Cyclus}
 \Cyclus is a dynamic, open source agent-based fuel cycle simulator. Built 
