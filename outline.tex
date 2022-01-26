@@ -35,7 +35,8 @@
     \end{outline}
     \item Motivations
     \begin{outline}
-        \item Benefits of using HALEU for reactors 
+        \item HALEU has broad uses outside of reactors \cite{nagley_ha-leu_2020}
+        \item Benefits of using HALEU in reactors (e.g higher burnups)
         \item Changing the fuel form affects fuel cycle dynamics
     \end{outline}
     \item Goals
@@ -43,7 +44,7 @@
         \item understand how deploying HALEU reactors affects resource demand
         \item understand which components of the fuel cycle are most sensitive to HALEU deployments
         \item understand how implementing recycling with HALEU reactors affects the fuel cycle
-        \item understand how possible avenues to obtain fuel for HAELU reactors can affect reactor performance
+        \item understand how possible avenues to obtain fuel for HAELU reactors can affect neutronics
     \end{outline}
 \end{outline}
 
@@ -53,14 +54,10 @@
     \begin{outline}
           \item Once-through vs recycle \cite{tsoulfanidis_nuclear_2013}
           \item Enrichment facility/SWU calculations \cite{tsoulfanidis_nuclear_2013}
-          \begin{outline}
-              \item classifications of uranium, LEU vs HEU vs HALEU
-          \end{outline}
           \item Recycling processes \cite{tsoulfanidis_nuclear_2013}
           \begin{outline}
               \item overview of aqueous reprocessing 
               \item Known changes to LWR fuel cycle by recycling 
-              \item 
           \end{outline}
     \end{outline}
     
@@ -75,11 +72,9 @@
                 \begin{outline}
                       \item Differences in EG 01 and EG 02 
                 \end{outline}
-            \item Effects of changing from 5\% to 7\% for PWR \cite{burns_reactor_2020}
             \item EG29 analysis \cite{sunny_transition_2015}
             \item verification \cite{feng_standardized_2016}
         \end{outline}
-        \item sensitivity studies
         \item \Cyclus \cite{huff_fundamental_2016}
         \begin{outline}
               \item basic fundamentals 
@@ -88,19 +83,36 @@
               \item comparison to other codes \cite{djokic_application_2015}
               \item verification \cite{bae_standardized_2019}
         \end{outline}
+        \item sensitivity analysis
+    \end{outline}    
+    \item Reactors with HALEU
+    \begin{outline}
+        \item fuel forms (ceramic vs metallic vs TRISO)
+        \item Effects of changing from 5\% to 7\% for PWR \cite{burns_reactor_2020}
+        \item Effects on SMRs \cite{carlson_implications_2022}
+        \item Effects of impurities \cite{celikten_effects_2021}
     \end{outline}
-    \item Reactors
+\end{outline}
+
+\item Methodology
+\begin{outline}
+    \item Collecting information
     \begin{outline}
         \item USNC MMR \cite{hussain_advances_2018}
         \item X-energy Xe-100 \cite{harlan_x-energy_2018}
         \item NuScale VOYGR
     \end{outline}
-    
+    \item material flow in fuel cycles
+    \begin{outline}
+        \item Once-through -- once-through-flow figure
+        \item recycle -- recycle-flow figure
+    \end{outline}
+    \item sensitivity analysis and optimization
+    \item downblending/re-enriching effects
 \end{outline}
 
 \item Material requirements -- Once through fuel cycles
 \begin{outline}
-    \item Methodology
     \item Scenario Definitions
     \item Results
     \begin{outline}
@@ -124,18 +136,19 @@
 
 \item Sensitivity analysis and optimization
 \begin{outline}
-    \item Methodology
     \item Results
 \end{outline}
 
 \item Model fuel cycle with recycle 
 \begin{outline}
-    \item Methodology
     \item Scenario Definitions
     \item Results
 \end{outline}
 
-\item Downblending effects on neutronics
+\item Effects on neutronics
+\begin{outline}
+    \item Results
+\end{outline}
 
 \item Conclusions
 \end{outline}
