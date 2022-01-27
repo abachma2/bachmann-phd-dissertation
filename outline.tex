@@ -35,8 +35,13 @@
     \end{outline}
     \item Motivations
     \begin{outline}
+        \item U.S. wants to develop a supply chain of HALEU
         \item HALEU has broad uses outside of reactors \cite{nagley_ha-leu_2020}
-        \item Benefits of using HALEU in reactors (e.g higher burnups)
+        \item Benefits of using HALEU in reactors 
+        \begin{outline}
+            \item higher burnups
+            \item reduced LCOE
+        \end{outline}
         \item Changing the fuel form affects fuel cycle dynamics
     \end{outline}
     \item Goals
@@ -45,6 +50,15 @@
         \item understand which components of the fuel cycle are most sensitive to HALEU deployments
         \item understand how implementing recycling with HALEU reactors affects the fuel cycle
         \item understand how possible avenues to obtain fuel for HAELU reactors can affect neutronics
+        \begin{outline}
+            \item neutron flux
+            \item k-eff 
+            \item $\beta$-eff
+            \item feedback coefficients, 
+            \item lifetimes 
+            \item uranium utilization in general
+            \item breeding ratio
+        \end{outline}
     \end{outline}
 \end{outline}
 
@@ -89,18 +103,29 @@
     \begin{outline}
         \item fuel forms (ceramic vs metallic vs TRISO)
         \item Effects of changing from 5\% to 7\% for PWR \cite{burns_reactor_2020}
-        \item Effects on SMRs \cite{carlson_implications_2022}
+        \begin{outline}
+            \item no effects on reactivity coefficients
+            \item more mining and enrichment per energy unit generated
+            \item reduced energy normalized quantity of waste
+            \item slight decrease in radioactivity of waste
+        \end{outline}
+        \item Effects on NuScale SMR \cite{carlson_implications_2022}
+        \begin{outline}
+            \item increases fast to thermal flux ratio
+            \item more burnable poisons
+            \item larger concentration of fission product poisons
+        \end{outline}
         \item Effects of impurities \cite{celikten_effects_2021}
     \end{outline}
 \end{outline}
 
 \item Methodology
 \begin{outline}
-    \item Collecting information
+    \item Reactors, inculuding serpent models
     \begin{outline}
         \item USNC MMR \cite{hussain_advances_2018}
         \item X-energy Xe-100 \cite{harlan_x-energy_2018}
-        \item NuScale VOYGR
+        \item NuScale VOYGR \cite{nuscale_chapter_2018}
     \end{outline}
     \item material flow in fuel cycles
     \begin{outline}
@@ -131,6 +156,39 @@
             \item No growth scenarios
             \item 1\% growth scenarios
         \end{outline}
+        \item Waste
+        \begin{outline}
+            \item No growth scenarios
+            \item 1\% growth scenarios
+        \end{outline}
+    \end{outline}
+\end{outline}
+
+\item Model fuel cycle with recycle 
+\begin{outline}
+    \item Scenario Definitions
+    \item Results
+    \begin{outline}
+        \item Reactor deployment
+        \begin{outline}
+            \item No growth scenarios
+            \item 1\% growth scenarios
+        \end{outline}
+        \item Uranium resources
+        \begin{outline}
+            \item No growth scenarios
+            \item 1\% growth scenarios
+        \end{outline}
+        \item SWU capacity
+        \begin{outline}
+            \item No growth scenarios
+            \item 1\% growth scenarios
+        \end{outline}
+        \item Waste
+        \begin{outline}
+            \item No growth scenarios
+            \item 1\% growth scenarios
+        \end{outline}
     \end{outline}
 \end{outline}
 
@@ -139,14 +197,9 @@
     \item Results
 \end{outline}
 
-\item Model fuel cycle with recycle 
-\begin{outline}
-    \item Scenario Definitions
-    \item Results
-\end{outline}
-
 \item Effects on neutronics
 \begin{outline}
+    \item Models
     \item Results
 \end{outline}
 
