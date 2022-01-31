@@ -1,0 +1,112 @@
+\section{Fuel cycle models}
+The fuel cycle scenarios created show the resources required for the transition from the 
+current fleet of \glspl{LWR} in the US to advanced reactors using \gls{HALEU}.
+All fuel cycle models were run in \Cyclus 
+\cite{huff_fundamental_2016}. Each simulation models current 
+\glspl{LWR} starting in 1965 and models all reactors out to 2090. Start and 
+end dates for each \gls{LWR} were obtained from the \gls{IAEA} \gls{PRIS} database 
+\cite{noauthor_power_1989}. Reactors still in operation in December 2020, and thus 
+lacking an end date in the \gls{PRIS} database are assumed to operate through their 
+current operating license 
+\cite{us_nuclear_regulatory_commission_clinton_2021,us_nuclear_regulatory_commission_comanche_2021,us_nuclear_regulatory_commission_comanche_2021-1,us_nuclear_regulatory_commission_perry_2021,us_nuclear_regulatory_commission_watts_2021,us_nuclear_regulatory_commission_watts_2021-1,nuclear_energy_institute_initial_2021,nuclear_energy_institute_second_2021}
+Only reactors with a power level above 400 MWe were used in the simulation 
+to avoid including prototype and research reactors present in the database. 
+Approximate masses for fuel used in the core the \glspl{LWR} was obtained 
+from \cite{todreas_nuclear_2012} and \cite{cacuci_handbook_2010}. 
+
+Material compositions for each commodity in the models are defined using recipes.
+Recipes for \gls{LWR} fresh and spent fuel were found in \cite{yacout_visionverifiable_2006}.
+Obtaining recipes for fresh and spent fuel for the advanced reactors is described in 
+Section \ref{sec:reactor_methods}.
+
+Fuel cycle scenarios are grouped into once-through fuel cycles and recycle fuel 
+cycles. Within each group, fuel cycle models are defined based on the energy demand 
+of the scenario (either no growth or 1\% annual growth in demand) and by the 
+advanced reactors deployed in the scenario. The transition from \glspl{LWR} to 
+advanced reactors is modeled as beginning in 2025, so the energy demand is based on the 
+energy supplied by \glspl{LWR} in 2025. Each of the fuel cycle scenarios 
+defined in this work are compared on the number of reactors deployed, the 
+uranium usage (both uranium ore and what is sent to the reactors), the enrichment 
+\gls{SWU} capacity required, and the amount of waste produced. 
+
+\subsection{Reactors} \label{sec:reactor_methods}
+This work considers three advanced reactors: the \gls{USNC} \gls{MMR}, 
+\cite{mitchell_usnc_2020}, the X-energy Xe-100 
+\cite{harlan_x-energy_2018,hussain_advances_2018}, and the NuScale VOYGR reactor
+\cite{nuscale_chapter_2020,nuscale_chapter_2020-1}. The \gls{USNC} \gls{MMR}
+and X-energy Xe-100 reactors require \gls{HALEU}, but the NuScale VOYGR requires
+a similar enrichment level to current \gls{LWR} fuel (Table \ref{tab:reactor_summary}). 
+The NuScale VOGYR was included in this work, despite not requiring \gls{HALEU} fuel, 
+because it is close to obtaining regulatory approval and is very likely to be 
+deployed along-side reactors that require \gls{HALEU}. 
+
+\begin{table}[ht]
+    \centering
+    \caption{Advanced reactor design specifications. }
+    \label{tab:reactor_summary}
+    \begin{tabular}{p{5cm}p{3cm}p{3cm}p{3cm}}
+        \hline
+        Design Criteria & \gls{USNC} \gls{MMR} & 
+            X-energy Xe-100 & NuScale VOYGR \\\hline
+        Reactor type & Modular HTGR & Modular HTGR & SMR\\
+        Power Output (MWth) & 15 & 200 & 160\\
+        Enrichment (\% $^{235}U$) & 13 & 15.5 & 4.55\\
+        Cycle Length (years) & 20 & online refuel & 2\\
+        Fuel form & \gls{TRISO} compacts & \gls{TRISO} pebbles & UO$_2$ pellets\\
+        Fuel burnup (GWd/MTU) & 42.7& 163& \hl{???}\\
+        Reactor Lifetime & 20 years & 60 years & 60 years\\
+        \hline
+    \end{tabular}
+\end{table}
+
+Fresh fuel recipes for these reactors are based on the required fuel form for 
+each reactor. Spent fuel recipes were obtained by performing depletion 
+calculations in serpent \cite{leppanen_serpent_2014}.\hl{add more when available}
+
+\subsection{Once-through fuel cycle}
+The flow of material through the modeled once-through fuel cycles is shown 
+in Figure \ref{fig:once-through_fuel_cycle}. The ``advanced reactor'' node in Figure 
+\ref{fig:once-through_fuel_cycle} represents any subset of the advanced reactors included 
+in the scenario. The \glspl{LWR} are deployed at their specific start and end dates 
+using the ``cycamore::DeployInst'', the advanced reactors are deployed as needed by 
+the ``cycamore::ManagerInst'', and the energy demand of the scenario is defined using 
+the ``cycamore::GrowthRegion'' \cite{scopatz_cyclus_2015}.
+
+\include{once-through-flow}
+
+
+The transition scenarios investigated model the transition to multiple 
+combinations of these reactors and different energy demand scenarios, 
+summarized in Table \ref{tab:scenarios_once-through}
+
+\begin{table}[ht]
+    \centering
+    \caption{Summary of the once-through fuel cycle transition scenarios.}
+    \label{tab:scenarios_once-through}
+    \begin{tabular}{l l l}
+            \hline
+            Scenario Number & Reactors Present & Energy growth model\\\hline
+            1 & \glspl{LWR} & N/A \\
+            2 & \glspl{LWR} and \gls{USNC} \gls{MMR} & No growth \\
+            3 & \glspl{LWR} and X-energy Xe-100& No growth \\
+            4 & \glspl{LWR}, X-energy Xe-100, \gls{USNC} \gls{MMR}& No growth\\
+            5 & \glspl{LWR}, \gls{USNC} \gls{MMR}, NuScale VOYGR & No growth\\
+            6 & \glspl{LWR}, X-energy Xe-100, NuScale VOYGR & No growth\\
+            7 & \glspl{LWR}, X-energy Xe-100, \gls{USNC} \gls{MMR}, NuScale VOYGR & No growth\\
+            8 & \glspl{LWR} and \gls{USNC} \gls{MMR}& 1\% growth \\
+            9 & \glspl{LWR} and X-energy Xe-100& 1\% growth\\
+            10 & \glspl{LWR}, X-energy Xe-100, \gls{USNC} \gls{MMR}& 1\% growth\\
+            11 & \glspl{LWR}, \gls{USNC} \gls{MMR}, NuScale VOYGR & 1\% growth\\
+            12 & \glspl{LWR}, X-energy Xe-100, NuScale VOYGR & 1\% growth\\
+            13 & \glspl{LWR}, X-energy Xe-100, \gls{USNC} \gls{MMR}, NuScale VOYGR & 1\% growth\\
+            \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Recycle fuel cycle}
+The flow of material through the fuel cycle scenarios with recycling is shown in 
+Figure \ref{fig:recycle_fuel_cycle}. Only spent fuel from the advanced reactors 
+is reprocessed and reused in a reactor. 
+\include{recycling-flow}
+
+
