@@ -59,6 +59,7 @@ Each of these quantites can be related using the following equations:
     \begin{equation}
         x_fF = x_pP + x_tT
     \end{equation}
+    \label{eq:enrichment_2}
     \begin{equation}
         SWU = [P*V(x_p) +T*V(x_t) - F*V(x_f)]*t
     \end{equation}
@@ -152,4 +153,24 @@ matches well with the results of the DYMOND simulation, but the power
 demand growth could match better to the target 1\% by slightly modifying 
 the \gls{SFR} deployment. 
 
+\section{Fuel cycle sensitivity analysis}
+
 \section{Reactors with HALEU}
+A lot of work has been done to evaluate the performance of reactors 
+using \gls{HALEU} fuel. Burns et al. investigated the reactor and fuel cycle 
+performance of an \gls{LWR} fueled by an enrichment above 5\% \cite{burns_reactor_2020}.
+Their work showed that increasing the fuel enrichment up to 7\% does not 
+largely affect the fuel temperature or the moderator temperature coefficents,
+but it does decrease the soluble boron coefficient and increase the maximum 
+burnup ar the edges of the fuel pellets. The impacts on the fuel cycle include 
+an increase in the amount of natural uranium required, a decrease in the 
+amount of high-level waste disposed of per unit energy, and changes in the 
+waste radioacitivity waste. The increase in natural uranium matches 
+expectations
+because the product mass (i.e. mass of fuel in the core) per unit 
+energy is the same, and 
+based on \ref{eq:enrichment_2} the increase in the product enrichment would 
+lead to an increase in the feed mass. 
+
+Increasing the fuel enrichment of the NuScale SMR has also been investigated 
+\cite{carlson_implications_2022}.
