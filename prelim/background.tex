@@ -15,13 +15,13 @@ include the once-through and uranium and plutonium recycling fuel cycles
 \subsection{Once-through fuel cycle}
 A once-through fuel cycle is characterized by fuel only going through one 
 pass through a reactor before being disposed of (Figure \ref{fig:once_through_background}).
-\include{once-through-figure}
+\input{once-through-figure}
 
 \subsection{Recycling fuel cycle}
 A recycling fuel cycle is characterized by fuel going through additional 
 passes through a reactor after a separtations step to remove fission 
 products (Figure \ref{fig:recycle_background})
-\include{recycling-figure}
+\input{recycling-figure}
 
 \subsection{Enrichment}
 In the nuclear fuel cycle, enrichment increases the relative abundance of 
@@ -75,12 +75,17 @@ Each of these quantites can be related using the following equations:
 \section{Fuel cycle simulators}
 Fuel cycle simulators are computational tools to model the flow of materials
 and the commissioning and decommissioning of facilities for a given fuel 
-cycle. 
+cycle. Simulators can be used to evaluate the transition between fuel cycle 
+options (e.g. from a once-through fuel cycle to one with recycling), the 
+performance of one fuel cycle with a growth in the demand of nuclear power, 
+and the effect of perturbations on a given fuel cycle \cite{piet_dynamic_2011}. 
 
 A variety of fuel cycle simulators have been developed to meet 
-different needs, including VISION\cite{yacout_visionverifiable_2006}, 
-DYMOND \cite{yacout_visionverifiable_2006}, and ORION \hl{FIND CITATION}. 
-This work primarily 
+different needs, including VISION \cite{yacout_visionverifiable_2006}, 
+DYMOND \cite{yacout_visionverifiable_2006}, and ORION \cite{gregg_analysis_2012}. 
+
+\subsection{Uses of fuel cycle simulators}
+VISION was used to evaluate 
 
 \subsection{\Cyclus}
 \Cyclus is a dynamic, open source agent-based fuel cycle simulator. Built 
@@ -155,7 +160,7 @@ the \gls{SFR} deployment.
 
 \section{Fuel cycle sensitivity analysis}
 
-\section{Reactors with HALEU}
+\section{HALEU in reactors}
 A lot of work has been done to evaluate the performance of reactors 
 using \gls{HALEU} fuel. Burns et al. investigated the reactor and fuel cycle 
 performance of an \gls{LWR} fueled by an enrichment above 5\% \cite{burns_reactor_2020}.
@@ -173,4 +178,25 @@ based on \ref{eq:enrichment_2} the increase in the product enrichment would
 lead to an increase in the feed mass. 
 
 Increasing the fuel enrichment of the NuScale \gls{SMR} has also been investigated 
-\cite{carlson_implications_2022}.
+\cite{carlson_implications_2022}. Increasing the fuel enricment to 8.34\% doubled the 
+fuel discharge burnup and the cycle time. Fission product poisons, specifically 
+sumarium-149 and xenon-135, increased on concentration when \gls{HALEU} fuel was used. 
+This increase impacts the neutrons poisons that are needed during operation and the 
+radioactivity of the fuel after discharge. Using \gls{HALEU} in the core also led 
+to a reduction in the \gls{LCOE} for the reactor for certain combinations of 
+enrichment and cycle length \cite{carlson_economic_2020,carlson_implications_2022}.
+
+If \gls{HALEU} fuel is produced by downblending \gls{HEU}, is it very possible that 
+the \gls{HALEU} will contain impurities that would not be present if natural uranium 
+were enriched to produce the \gls{HALEU}. Bounding studies on the uranium isotopic 
+composition of \gls{HALEU} produced from spent fuel from \gls{EBR} shows the presence 
+of uranium-232, 233, 234, and 236 \cite{vaden_isotopic_2018}. \gls{HALEU} created from 
+downblened \gls{HEU} at the Y-12 Nuclear Security Complex also has uranium-232, 234, and 
+236 impurities \cite{nelson_foreign_2010}. Uranium-233 is a fissile 
+isotope and is expected to affect the neutron population inside a reactor. Uranium-232, 
+234, and 236 are parasitic neutron absorbers, so their presence is also expected to affect 
+the neutron population. The neutronics performance of using \gls{HALEU} containing
+uranium-235 and 238 was compared with the performance using \gls{HALEU} from Y-12 with the 
+known impurities \cite{celikten_effects_2021}. Using 
+the \gls{HALEU} with the \gls{HEU} impurities showed a 0.43\% reactivity drop, leading to 
+an 8\% reduction in the cycle length. 
