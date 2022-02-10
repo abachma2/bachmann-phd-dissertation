@@ -158,7 +158,29 @@ matches well with the results of the DYMOND simulation, but the power
 demand growth could match better to the target 1\% by slightly modifying 
 the \gls{SFR} deployment. 
 
-\section{Fuel cycle sensitivity analysis}
+\section{Sensitivity analysis and optimization}
+
+One tool for performing sensitivity analysis and optimization is 
+Dakota \cite{adams_dakota_2019}
+
+\subsection{Dakota}
+Dakota was developed by \gls{SNL} as a systematic way for scientists and 
+engineers to "obtain improved or optimal designs or understand sensitivity
+or uncertainty using simulation-based models" \cite{adams_dakota_2019}.
+Dakota can easily be coupled to a variety of codes in a ``black-box'' manner
+to remove supplying Dakota with any of the other program's source code. 
+
+Dakota has been coupled to fuel cycle simulators such as DYMOND and \Cyclus 
+\cite{chee_sensitivity_2019}. This coupeling was used to perform one-at-a-time, 
+synergistic, and global sensitivity analysis on the transition from \gls{EG} 01
+to \gls{EG} 30. 
+
+Dakota has been used with DYMOND to perform sensitivity analysis on a transition
+scenario of "the US nuclear fleet to a closed fuel cycle with small modular 
+\glspl{LWR} and fast reactors fueled by reprocessed used nuclear fuel" 
+\cite{richards_application_2021}. This analysis focused on global analysis 
+through the Sobol' indicies. 
+
 
 \section{HALEU}
 \gls{HALEU} is defined as uranium that is enriched between 5-20\% by mass in 
