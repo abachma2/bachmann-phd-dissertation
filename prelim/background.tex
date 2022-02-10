@@ -58,8 +58,8 @@ Each of these quantites can be related using the following equations:
     \end{equation}
     \begin{equation}
         x_fF = x_pP + x_tT
+        \label{eq:enrichment_2}
     \end{equation}
-    \label{eq:enrichment_2}
     \begin{equation}
         SWU = [P*V(x_p) +T*V(x_t) - F*V(x_f)]*t
     \end{equation}
@@ -70,7 +70,20 @@ Each of these quantites can be related using the following equations:
     \begin{equation}
         t = \text{a given time period}
     \end{equation}
+    \label{eq:enrichment}
 \end{subequations}
+
+The equations in Eq. \ref{eq:enrichment} show that as the desired enrichment level 
+of the product feed increases, the feed mass must also increase, assuming everything 
+else is held constant. The equations also show that as the desired product 
+enrichemnt level increases, the amount of \gls{SWU} capacity needed also increases. 
+However, if the product mass decreases, then the required \gls{SWU} capacity 
+also decreases. Therefore, changes to the product enrichment level and mass 
+throughput have opposite effects on the amount of feed material and required 
+\gls{SWU} capacity. Changes to both quantities that are in opposite directions 
+(i.e. an increase in one and a decrease in the other) will not lead to a clear 
+expectation to the change in feed material of \gls{SWU} capacity. The effect 
+on these variables will depend on the magnitude of the two changes.
 
 \section{Fuel cycle simulators}
 Fuel cycle simulators are computational tools to model the flow of materials
@@ -80,12 +93,54 @@ options (e.g. from a once-through fuel cycle to one with recycling), the
 performance of one fuel cycle with a growth in the demand of nuclear power, 
 and the effect of perturbations on a given fuel cycle \cite{piet_dynamic_2011}. 
 
-A variety of fuel cycle simulators have been developed to meet 
-different needs, including VISION \cite{yacout_visionverifiable_2006}, 
-DYMOND \cite{yacout_visionverifiable_2006}, and ORION \cite{gregg_analysis_2012}. 
+Stuff about ideal simulators \cite{huff_next_2010,brown_identification_2016}.
+
+A variety of fuel cycle simulators have been developed with different modeling 
+capabilities. Some of the fuel cycle simulators developed including VISION 
+\cite{yacout_visionverifiable_2006}, 
+DYMOND \hl{better citation}, and ORION \cite{gregg_analysis_2012}. 
+VISION was developed primarily to meet the program objectives of the 
+\gls{AFCI} based on the functionalities of DYMOND-US \cite{yacout_visionverifiable_2006}.
+VISION dynamically models the mass flow of material through the 
+entire fuel cycle and calculates metrics based on the \gls{AFCI} program 
+objectives. New functionalities added to VISION, compared with DYMOND-US, 
+include economic costing and isotope decay. VISION is divided into multiple 
+modules to model the mass flow, calculate metrics, perform control, or 
+integration. The software was developed using Powersim software \cite{powersim_powersim_nodate},
+which provides a modular structure for mass flow to occur between modules. 
+
+DYMOND 
+
+ORION 
 
 \subsection{Uses of fuel cycle simulators}
-VISION was used to evaluate 
+One key piece of work using fuel cycle simulators was a multi-lab effort 
+to verify their results \cite{feng_standardized_2016}.
+
+Fuel cycle simulators have been used for many years, but their use over the 
+last decade has been guided by the Nuclear Fuel Cycle \gls{ES} from the \gls{DOE-NE} 
+\cite{wigeland_nuclear_2014}. This project categorized 
+multiple fuel cycle options into 40 different \glspl{EG} based on characteristics 
+such as the number of times spent fuel is recycled, the type of fuel burned, 
+and the type of reactor (e.g. thermal critical reactor, fast critical reactor). 
+The \gls{EG} were compared on their performance at equilibrium on nine evaluation 
+criterion, including nuclear waste management and resource utilization. The 
+results of this project showed that the most benefit comes from fuel cycles 
+that use continuous recycle of U/Pu with new or natural uranium in fast critical 
+reactors (\gls{EG} 23), continuous recycle of U/TRU with new or natural 
+uranium in fast critical reactors (\gls{EG} 24), continuous recycle of U/Pu 
+with new or natural uranium in both fast and thermal critical reactors 
+(\gls{EG} 29) or contiuous recycle of U/TRU with new or natural uranium in 
+both fast and critical reactors \cite{wigeland_nuclear_2014}. 
+
+Based on the results of the \gls{ES}, many efforts have been made to model 
+the transition to these promising fuel cycle options using fuel cycle 
+simulators. ORION was used to model the transition from a once-through 
+fuel cycle option using enriched uranium in thermal critical reactors (\gls{EG}
+01) to \gls{EG} 29 \cite{sunny_transition_2015}. This work in ORION 
+deomonstrated the importance of new \glspl{LWR} built or license extensions of 
+exisiting reactors for this transition. 
+
 
 \subsection{\Cyclus}
 \Cyclus is a dynamic, open source agent-based fuel cycle simulator. Built 
@@ -97,10 +152,10 @@ of \Cyclus allow for the software to easily model any fuel cycle scenario.
 
 \Cyclus uses the notion of an \textit{agent} to to represent different 
 components in the simulated fuel cycle. Agents are 
-defined using the \Cyclus application programming interface (API), which 
-defines and develops agents. Generic APIs are used to allow users 
+defined using the \Cyclus \gls{API}, which 
+defines and develops agents. Generic \glspl{API} are used to allow users 
 to develop their own suite of agent libraries and use them within \Cyclus. 
-The APIs anticipate the structure on information about a given library 
+The \glspl{API} anticipate the structure on information about a given library 
 that is required by the core \Cyclus kernel. This allows them to facilitate 
 information sharing between the plug-in library and the \Cyclus framework. 
 In addition to the flexibility in libraries and agents, this framework 
@@ -109,7 +164,7 @@ defined libraries. Libraries are loaded without changes to the \Cyclus
 kernel and without unwanted transfer of sensitive information. 
 
 The agent-based modeling paradigm employed by \Cyclus allows agent level 
-modeling, as opposed to system level modeling. This allows difference 
+modeling, as opposed to system level modeling. This paradigm allows different 
 fuel cycle facilities, such as a reactor and a fuel fabrication plant, to 
 be defined independently but still interact with each other in the 
 simulation. There are three main groups of agents within the \Cyclus 
@@ -118,16 +173,31 @@ the individual units in the fuel cycle that implement technology,
 such as a fuel fabrication facility or a uranium mine. Institutions 
 manage the facilities, similar to a company. Regions provide geographic 
 and political context for the institutions and regions, and can be thought 
-of as similar to individual nations. Each type of agent has its own 
-class wihtin \Cyclus. 
-
-The types of agents are related using a parent-child hierarchy: regions are
+of as similar to individual nations. The types of agents are related using 
+a parent-child hierarchy: regions are
 parents of institutions, and institutions are parents of facilities. This 
 structure requires that institutions are responsible for the deployment 
-and decommissioning of the facilities. It also allows for advanced logic 
-to be implemented wth respect to facility building and decommissioning, 
-such as preferential regional or institutional trading (e.g. tariffs or 
-contracts). 
+and decommissioning of the facilities. 
+
+The \Cycamore module provides a variety of libraries that can be 
+dynamically loaded into \Cyclus for use in a simualation 
+\cite{carlsen_cycamore_2014,huff_fundamental_2016}. These libraries 
+include mutliple facilities, two institutions, and one region as of 
+\Cycamore 1.3. The two institutions interact with the region (the 
+cycamore::GrowthRegion) to deploy facilities as needed to meet a 
+commodity demand specified by the cycamore::GrowthRegion. 
+The cycamore::DeployInst manually defines the number of each facilitiy 
+to be deployed at each time step. These facilities are then registered with 
+the cycamore::GrowthRegion for how they contribute to the demand. The 
+facilities are decommissioned at the end of their lifetime. The 
+cycamore::ManagerInst deploys facilities according to the commodity 
+demand that is not met by facilities deployed by the cycamore::DeployInst. 
+
+In \Cyclus, agents trade materials through the \gls{DRE} 
+\cite{gidden_agent-based_2015,huff_fundamental_2016}. The \gls{DRE} defines the 
+supply-demand communication framework and treats facilities as black boxes. 
+There are three steps to the \gls{DRE}: information gathering, resource 
+exchanges, and trade execution. 
 
 \subsection{Verification and Use}
 Verification of \Cyclus has been performed \cite{bae_standardized_2019}, 
@@ -178,8 +248,12 @@ to \gls{EG} 30.
 Dakota has been used with DYMOND to perform sensitivity analysis on a transition
 scenario of "the US nuclear fleet to a closed fuel cycle with small modular 
 \glspl{LWR} and fast reactors fueled by reprocessed used nuclear fuel" 
-\cite{richards_application_2021}. This analysis focused on global analysis 
-through the Sobol' indicies. 
+\cite{richards_application_2021}. This analysis focused on failure determination
+and global analysis through the Sobol' indicies, and deomnstrated how the 
+combination of these tools can ``identify important design and policy parameters
+for transition scenarios and how those parameters interact not only with a single 
+response, but also synergistically between all parameters and metrics of 
+interest'' \cite{richards_application_2021}. 
 
 
 \section{HALEU}
@@ -217,8 +291,8 @@ which is less than many of the \gls{HALEU}-fueled reactor designs
 require. Another enrichment facility is currently under development in 
 Piketon, Ohio which is licensed to enrich uranium up to 20\% 
 uranium-235 \cite{noauthor_establishing_2022}. However, this is only 
-designed to be a demonstration facility that produces less than 1 MT of 
-\gls{HALEU} \cite{noauthor_establishing_2022} with the possibility of 
+designed to be a demonstration facility producing up to 600 kg of 
+\gls{HALEU} \cite{us_nrc_centrus_2021} with the possibility of 
 developing more facilities to produce up to 12 MTU/year of \gls{HALEU}
 \cite{noauthor_establishing_2022}.
 
@@ -282,12 +356,7 @@ but it does decrease the soluble boron coefficient and increase the maximum
 burnup ar the edges of the fuel pellets. The impacts on the fuel cycle include 
 an increase in the amount of natural uranium required, a decrease in the 
 amount of high-level waste disposed of per unit energy, and changes in the 
-waste radioacitivity waste. The increase in natural uranium matches 
-expectations
-because the product mass (i.e. mass of fuel in the core) per unit 
-energy is the same, and 
-based on \ref{eq:enrichment_2} the increase in the product enrichment would 
-lead to an increase in the feed mass. 
+waste radioacitivity waste. 
 
 Increasing the fuel enrichment of the NuScale \gls{SMR} has also been investigated 
 \cite{carlson_implications_2022}. Increasing the fuel enricment to 8.34\% doubled the 
