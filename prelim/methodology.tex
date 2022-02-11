@@ -2,7 +2,8 @@ The fuel cycle scenarios created show the resources required for the transition 
 current fleet of \glspl{LWR} in the US to advanced reactors using \gls{HALEU}.
 All fuel cycle models were run in \Cyclus 
 \cite{huff_fundamental_2016}. Each simulation models current 
-\glspl{LWR} starting in 1965 and models all reactors out to 2090. Start 
+\glspl{LWR} starting in 1965 and models all reactors out to 2090 with a timestep 
+of one month. Start 
 and select end dates for \glspl{LWR} were obtained from the \gls{IAEA} \gls{PRIS} database 
 \cite{noauthor_power_1989}. Reactors still in operation in December 2020, and thus 
 lacking an end date in the \gls{PRIS} database are assumed to operate through their 
@@ -33,7 +34,9 @@ an aggressive timeline.
 Each of the fuel cycle scenarios 
 defined in this work are compared on the number of reactors deployed, the 
 uranium usage (both uranium ore and what is sent to the reactors), the enrichment 
-\gls{SWU} capacity required, and the amount of waste produced. 
+\gls{SWU} capacity required, and the amount of waste produced. The natural 
+uranium usage and waste production are two of the metrics used in the \gls{ES} 
+\cite{wigeland_nuclear_2014} and provide a way to compare this work to that study.
 
 \section{Reactors} \label{sec:reactor_methods}
 This work considers three advanced reactors: the \gls{USNC} \gls{MMR}, 
@@ -186,3 +189,19 @@ after one additional pass? Probably need to read literature}
             \hline
     \end{tabular}
 \end{table}
+
+\section{Calculation of results}
+The results presented for the transition scenarios are from the SQLite database 
+that is output by each \Cyclus simulation. Because the non-reactor facilities 
+in the simulations (e.g. enrichment facility) do not have a specific cap on the 
+amount of material they can hold, the material being traded by these facilities 
+does not accurately capture the material requirements of the reactors. Therefore, 
+the material requirements and waste of each scenario are calculated based on 
+the material sent to and discharged from the reactors in each scenario. 
+
+The mass of enriched uranium reported is the mass that is sent to the reactors 
+at each time step. The \gls{SWU} required is also calculated based on the 
+mass sent to the reactors, and does not reflect the capacity of an actual 
+facility. The mass of natural uranium required to produce the enriched uranium 
+is calculated based on the mass of product sent to the reactors, Eq. \ref{eq:enrichment},
+and 
