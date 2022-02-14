@@ -5,7 +5,9 @@ the mass of enriched
 uranium required, the amount of \gls{SWU} capacity required to enrich uranium,
 and the mass of waste produced. A subset of these results are presented
 in \cite{bachmann_enrichment_2021}, except the \glspl{LWR} were assumed to 
-operate for 60 years if not closed before December 2020. 
+operate for 60 years if not closed before December 2020. The results of Scenario 
+1 are presented first, followed by the results of the no growth scenarios 
+(Scenarios 2-7), then the results of the 1\% growth scenarios (Scenarios 8-13). 
 
 \section{Scenario 1}
 Scenario 1 models only the \glspl{LWR} deploying the United States with no 
@@ -83,7 +85,16 @@ discharged from the reactors across the entire simulation, and an average of
 \end{figure}
 
 \section{Reactor deployment}
+Each of the scenarios are compared on the number of advanced reactors that must 
+be built to meet the prescribed energy demand. 
 \subsection{No growth scenarios}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{nogrowth_reactors.pdf}
+    \caption{Total number of advanced reactors as a function of time in Scenarios 2-7.}
+    \label{fig:nogrowth_reactors}
+\end{figure}
 
 \begin{table}
     \centering 
@@ -93,12 +104,30 @@ discharged from the reactors across the entire simulation, and an average of
     \begin{tabular}{c c c c c}
         \hline
         Scenario & \glspl{MMR} & Xe-100s & VOYGRs & Total\\\hline
-        2 & \\
-        3 & \\
-        4 & \\
-        5 & \\
-        6 & \\
-        7 & \\
+        2 & 9182 & - & - & 9182\\
+        3 & - & 1225 & - & 1225\\
+        4 & 752 & 1124 & - & 1876\\
+        5 & 127 & - & 1811 & 1938\\
+        6 & - & 1099 & 191 & 1288\\
+        7 & 782 & 1122 & 0 & 1902\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+    \centering 
+    \caption{Maximum number of each type of advanced reactor and maximum total 
+    number of reactors added to the simulation at a single time step in Scenarios 2-7.}
+    \label{tab:reactors_added_nogrowth}
+    \begin{tabular}{c c c c c}
+        \hline
+        Scenario & \glspl{MMR} & Xe-100s & VOYGRs & Total\\\hline
+        2 & 378 & - & - & 378\\
+        3 & - & 50 & - & 50\\
+        4 & 31 & 50 & - & 56\\
+        5 & 4 & - & 75 & 78\\
+        6 & - & 49 & 8 & 51\\
+        7 & 30 & 50 & 0 & 56\\
         \hline
     \end{tabular}
 \end{table}
