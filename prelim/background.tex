@@ -20,7 +20,7 @@ pass through a reactor before being disposed of (Figure \ref{fig:once_through_ba
 \subsection{Recycling fuel cycle}
 A recycling fuel cycle is characterized by fuel going through additional 
 passes through a reactor after a separtations step to remove fission 
-products (Figure \ref{fig:recycle_background})
+products (Figure \ref{fig:recycle_background}).
 \input{recycling-figure}
 
 \subsection{Enrichment}
@@ -98,18 +98,23 @@ Stuff about ideal simulators \cite{huff_next_2010,brown_identification_2016}.
 A variety of fuel cycle simulators have been developed with different modeling 
 capabilities. Some of the fuel cycle simulators developed including VISION 
 \cite{yacout_visionverifiable_2006}, 
-DYMOND \hl{better citation}, and ORION \cite{gregg_analysis_2012}. 
+\gls{DYMOND} \hl{better citation}, and ORION \cite{gregg_analysis_2012}. 
 VISION was developed primarily to meet the program objectives of the 
-\gls{AFCI} based on the functionalities of DYMOND-US \cite{yacout_visionverifiable_2006}.
+\gls{AFCI} based on the functionalities of \gls{DYMOND}-US \cite{yacout_visionverifiable_2006}.
 VISION dynamically models the mass flow of material through the 
 entire fuel cycle and calculates metrics based on the \gls{AFCI} program 
-objectives. New functionalities added to VISION, compared with DYMOND-US, 
+objectives. New functionalities added to VISION, compared with \gls{DYMOND}-US, 
 include economic costing and isotope decay. VISION is divided into multiple 
 modules to model the mass flow, calculate metrics, perform control, or 
 integration. The software was developed using Powersim software \cite{powersim_powersim_nodate},
 which provides a modular structure for mass flow to occur between modules. 
 
-DYMOND 
+\gls{DYMOND} is a fuel cycle simulator developed by \gls{ANL} that combines 
+multiple modeling paradigms, including system dynamics, discrete events, and
+agent-based modeling \cite{feng_sensitivity_2020}.
+
+performs depletion of meterial inputs to a rector facility using 
+ORIGEN \cite{wieselquist_scale_2020}.
 
 ORION 
 
@@ -197,7 +202,10 @@ In \Cyclus, agents trade materials through the \gls{DRE}
 \cite{gidden_agent-based_2015,huff_fundamental_2016}. The \gls{DRE} defines the 
 supply-demand communication framework and treats facilities as black boxes. 
 There are three steps to the \gls{DRE}: information gathering, resource 
-exchanges, and trade execution. 
+exchanges, and trade execution. Material compositions in \Cyclus are 
+defined using recipes, however a module has been developed to allow for 
+depletion calculations of a single enrichment reactor core using ORIGEN 
+\cite{skutnik_cyborg:_2016}.
 
 \subsection{Verification and Use}
 Verification of \Cyclus has been performed \cite{bae_standardized_2019}, 
@@ -221,14 +229,20 @@ fuel cycle simulators.
 \Cyclus has been used to model the EG 23 transition scenario 
 \cite{wigeland_nuclear_2014}, assuming a 1\% growth in power demand 
 \cite{djokic_application_2015}. The results from \Cyclus were compared 
-to the results from modeling the same transition scenario with DYMOND, 
+to the results from modeling the same transition scenario with \gls{DYMOND}, 
 a fuel cycle simulator from \gls{ANL}. The power generated, reactor entry 
 time, and reactor exit time for the \Cyclus simulation qualitatively 
-matches well with the results of the DYMOND simulation, but the power 
+matches well with the results of the \gls{DYMOND} simulation, but the power 
 demand growth could match better to the target 1\% by slightly modifying 
 the \gls{SFR} deployment. 
 
 \section{Sensitivity analysis and optimization}
+Sensitivity analysis is a broad termed used to encompass sensitivity analysis, 
+uncertainty propagation, and parametric studies. 
+
+Sensitivity analysis for fuel cycle simulations has been done using a variety of 
+tools. Coupeling of \Cyclus with the Metaheuristic Opimization Tool (MOT) from 
+\gls{ORNL} demonstrated \cite{feng_sensitivity_2020}. 
 
 One tool for performing sensitivity analysis and optimization is 
 Dakota \cite{adams_dakota_2019}
@@ -240,12 +254,12 @@ or uncertainty using simulation-based models" \cite{adams_dakota_2019}.
 Dakota can easily be coupled to a variety of codes in a ``black-box'' manner
 to remove supplying Dakota with any of the other program's source code. 
 
-Dakota has been coupled to fuel cycle simulators such as DYMOND and \Cyclus 
+Dakota has been coupled to fuel cycle simulators such as \gls{DYMOND} and \Cyclus 
 \cite{chee_sensitivity_2019}. This coupeling was used to perform one-at-a-time, 
 synergistic, and global sensitivity analysis on the transition from \gls{EG} 01
 to \gls{EG} 30. 
 
-Dakota has been used with DYMOND to perform sensitivity analysis on a transition
+Dakota has been used with \gls{DYMOND} to perform sensitivity analysis on a transition
 scenario of "the US nuclear fleet to a closed fuel cycle with small modular 
 \glspl{LWR} and fast reactors fueled by reprocessed used nuclear fuel" 
 \cite{richards_application_2021}. This analysis focused on failure determination
